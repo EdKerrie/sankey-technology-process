@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "require(rjson)\n\n#get source from original example\n#this is a JSON, so will need to translate\n#this is complicated and unnecessary but feel I need to replicate\n#for completeness\n#expect most data to come straight from R\n#in form of source, target, value\nlinks <- matrix(unlist(\n  rjson::fromJSON(\n    file = \"http://bost.ocks.org/mike/sankey/energy.json\"\n  )$links\n),ncol = 3, byrow = TRUE)\nnodes <- unlist(\n  rjson::fromJSON(\n    file = \"http://bost.ocks.org/mike/sankey/energy.json\"\n  )$nodes\n)\n\n#convert to data.frame so souce and target can be character and value numeric\nlinks <- data.frame(links)\ncolnames(links) <- c(\"source\", \"target\", \"value\")\nlinks$source <- sapply(links$source, FUN = function(x) {return(as.character(nodes[x+1]))}) #x+1 since js starts at 0\nlinks$target <- sapply(links$target, FUN = function(x) {return(nodes[x+1])}) #x+1 since js starts at 0\n\n#Get data\nrequire(rCharts)\nbbe_links <- read.csv(\"bbe_links.csv\", sep=\";\")\n\n#now we finally have the data in the form we need\nsankeyPlot <- rCharts$new()\nsankeyPlot$setLib('http://timelyportfolio.github.io/rCharts_d3_sankey/libraries/widgets/d3_sankey')\nsankeyPlot$set(\n  data = bbe_links,\n  nodeWidth = 15,\n  nodePadding = 10,\n  layout = 32,\n  width = 960,\n  height = 500,\n  units = \"Connections\",\n  title = \"Sankey Diagram\"\n)\nsankeyPlot\n\n#GoogleVis\nrequire(googleVis)\nplot(\n  gvisSankey(bbe_links, from=\"source\", \n             to=\"target\", weight=\"value\",\n             options=list(\n               height=250,\n               sankey=\"{link:{color:{fill:'lightblue'}}}\"\n             ))\n)",
+    "created" : 1463489451889.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1966903908",
+    "id" : "A071E7EA",
+    "lastKnownWriteTime" : 1463491206,
+    "last_content_update" : 1463491895665,
+    "path" : "~/Rijksdienst voor Ondernemend Nederland/Sankey/Sankey_temp.R",
+    "project_path" : "Sankey_temp.R",
+    "properties" : {
+        "source_window_id" : ""
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
