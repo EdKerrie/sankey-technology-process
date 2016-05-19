@@ -25,7 +25,7 @@ links$source <- sapply(links$source, FUN = function(x) {return(as.character(node
 links$target <- sapply(links$target, FUN = function(x) {return(nodes[x+1])}) #x+1 since js starts at 0
 
 #Get data
-bbe_links <- read.csv("bbe_links.csv", sep=";")
+bbe_links <- read.csv("bbe_links.csv")
 
 #now we finally have the data in the form we need
 sankeyPlot <- rCharts$new()

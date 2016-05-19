@@ -1,15 +1,32 @@
-source;target;value
-sunlight;artificial leafs;1
-sunlight;micro-algae and bacteria;1
-sunlight;macro-algae;1
-sunlight;plants;1
-CO2;artificial leafs;1
-CO2;micro-algae and bacteria;1
-CO2;macro-algae;1
-CO2;plants;1
-artificial leafs;liquids;2
-plants;liquids;2
-liquids;destillation ;2
-liquids;washing;2
-;;
-;;
+source,target,value
+100 forestry,grinding/sieving,2
+200 agriculture,thermal/pressurized pre-treatment,2
+300 manure,enzymatic pre-treatment,2
+400 sludge,drying,2
+500 industry,pyrolysis,2
+600 municipal waste,pressing/filtration,2
+700 other sources,washing/extraction,2
+800 mixed streams,other pretreatment,2
+grinding/sieving,alcohol fermentation,1
+thermal/pressurized pre-treatment,alcohol fermentation,1
+enzymatic pre-treatment,alcohol fermentation,1
+drying,alcohol fermentation,1
+pyrolysis,alcohol fermentation,1
+pressing/filtration,alcohol fermentation,1
+washing/extraction,alcohol fermentation,1
+other pretreatment,alcohol fermentation,1
+grinding/sieving,other fermentation,1
+thermal/pressurized pre-treatment,other fermentation,1
+enzymatic pre-treatment,other fermentation,1
+drying,other fermentation,1
+pyrolysis,other fermentation,1
+pressing/filtration,other fermentation,1
+washing/extraction,other fermentation,1
+other pretreatment,other fermentation,1
+alcohol fermentation,solids,4
+alcohol fermentation,liquids ,4
+other fermentation,gasses,8
+solids,other posttreatment,4
+liquids ,destillation ,4
+gasses,gas cleaning,4
+gasses,gas upgrading,4
